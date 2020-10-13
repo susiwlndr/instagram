@@ -1,0 +1,15 @@
+<%= form_for post do |f| %>
+  
+<%= render 'shared/errors', object: post %>
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+ 	
+ 	<div>
+    <%= f.label :caption %>
+    <%= f.text_area :caption %>
+  </div>
+ 
+  <%= f.submit %>
+<% end %>
