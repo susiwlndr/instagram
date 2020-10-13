@@ -1,5 +1,4 @@
-class ForumPostsController < ApplicationController
-	before_action :authenticate_user!, only: [:create]
+class CommentPostsController < ApplicationController
 	def create
 
 		@post = Post.find(params[:post_id])
@@ -11,7 +10,7 @@ class ForumPostsController < ApplicationController
 	  if @comment.save
 			redirect_to post_path(@post)
 		else
-			render 'post/show'
+			render 'posts/show'
 		end
 	end
 

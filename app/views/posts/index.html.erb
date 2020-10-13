@@ -13,7 +13,7 @@
      margin: 10px auto;
      border: 2px solid black;
      box-sizing: border-box;
-     min-height: 300px;
+     min-height: 320px;
    }
    img {
      margin: 0px;
@@ -47,6 +47,7 @@
 <p><%= post.user.username %></p>
 <%= image_tag(post.image.url, alt: 'Image') if post.image? %>
 <span><%= post.caption %></span><br/>
+<%= post.comment_posts.count %> Comment <br/>
 <a href="/">Like</a> |&nbsp;
 <%= link_to "Comment", post_path(post) %> |&nbsp;
 <a href="/posts/new">Share</a>

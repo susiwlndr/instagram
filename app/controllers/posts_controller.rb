@@ -22,9 +22,6 @@ class PostsController < ApplicationController
     end
 	end
 
-	def create_comment
-	end
-
 	private
  
   def post_params

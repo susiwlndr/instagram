@@ -12,7 +12,7 @@
      margin: 10px auto;
      border: 2px solid black;
      box-sizing: border-box;
-     min-height: 380px;
+     min-height: 440px;
    }
    img {
      margin: 0px;
@@ -47,6 +47,16 @@
 <%= image_tag(@post.image.url, alt: 'Image') if @post.image? %>
 <span><%= @post.caption %></span><br/>
 <hr>
+<% @post.comment_posts.each do |p| %>
+  <%= p.comment %> oleh <%= p.user.username %>
+<% end %>
+<%= form_for [@post, @comment] do |f| %>
+      <div>
+        <%= f.label :comment %><br/>
+        <%= f.text_area :comment, rows: 5, class: 'form-control' %>
+      </div>
+        <%= f.submit "Comment", class: 'btn btn-primary form-control' %>
+<%end%>
 </div>
 </div>
 </body>
