@@ -40,13 +40,21 @@
 <body>
   <div class="container">
   <div class="uraver">
-<p><%= post.user.username %></p>
+<%= link_to post.user.username, user_path(post) %>
 <%= image_tag(post.image.url, alt: 'Image') if post.image? %>
 <span><%= post.caption %></span><br/>
-<%= post.comment_posts.count %> Comment <br/>
-<a href="/">Like</a> |&nbsp;
+
+<%= post.comment_posts.count %> Comment |&nbsp;
+<%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%><br/>
+
+<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+  <%= link_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+<% else %>
+  <%= link_to 'Like', post_likes_path(post), method: :post %>
+<% end %> |
 <%= link_to "Comment", post_path(post) %> |&nbsp;
-<a href="/posts/new">Share</a>
+<a href="#">Share</a>
 <hr>
 </div>
 </div>

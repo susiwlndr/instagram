@@ -44,7 +44,7 @@
 <%= image_tag(@post.image.url, alt: 'Image') if @post.image? %>
 <span><%= @post.caption %></span><br/>
 <hr>
-<% @post.comment_posts.each do |p| %>
+<% @posts.each do |p| %>
   <%= p.comment %> oleh <%= p.user.username %><br/>
 <% end %>
 <%= form_for [@post, @comment] do |f| %>
