@@ -5,7 +5,7 @@ class CommentPostsController < ApplicationController
 		@comment = CommentPost.new(resource_params)
 
 		@comment.post = @post
-		@comment.user = User.first
+		@comment.user = current_user
 
 	  if @comment.save
 			redirect_to post_path(@post)
